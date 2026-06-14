@@ -132,4 +132,6 @@ Views follow a heavily right-skewed distribution — median views
 Nagireddy Prameela Durga
 Aspiring Data Analyst 
 
-[https://www.linkedin.com/in/prameelanagireddy/](#) · [https://www.kaggle.com/prameelanagireddy](#) · [prameelanagireddy551@gmail.com](#)
+[LinkedIn](https://www.linkedin.com/in/prameelanagireddy/) · 
+[Kaggle](https://www.kaggle.com/prameelanagireddy) · 
+[Email](mailto:prameelanagireddy551@gmail.com)
