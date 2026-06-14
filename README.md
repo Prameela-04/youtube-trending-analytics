@@ -22,7 +22,9 @@ Key findings:
   by 3× compared to the dataset median
 - ⏱️ Videos that take longer to trend accumulate more total views
   (correlation: +0.345) — suggesting slow-burn evergreen content
-  outperforms fast news spikes
+  outperforms fast news spikes.
+  - 🤖 A Random Forest model predicts high vs low engagement with
+    68% accuracy using only 9 features
 
 
 ---
@@ -35,6 +37,8 @@ Key findings:
 | Pandas | Data cleaning and manipulation |
 | NumPy | Numerical operations |
 | Matplotlib + Seaborn | Data visualisation |
+| scikit-learn | Machine learning model (Random Forest) |
+| VADER NLP | Title sentiment analysis |
 | SQLite | SQL analysis layer |
 | Google Colab | Development environment |
 | Looker Studio | Interactive dashboard |
@@ -71,16 +75,16 @@ podcast-engagement-analytics/
 
 ### 1. Engagement Distribution
 Views follow a heavily right-skewed distribution — median views
-(518K) are 3.8× lower than the mean (1.96M), driven by viral outliers.
+(518K) are 3.8× lower than the mean (1.96M), driven by viral outliers.![Engagment Distribution](images/screenshots/EngagmentDistribution.png)
 
 ### 2. Category Performance
-![Category Performance](https://github.com/Prameela-04/podcast-engagement-analytics/blob/main/images/screenshots/YouTube_Analytics_%E2%80%94_Dashboard_Data_Report.pdf)
+![Category Performance](images/screenshots/CategoryPerformance.png)
 
 ### 3. Upload Timing Patterns
-![Upload Timing](https://github.com/Prameela-04/podcast-engagement-analytics/blob/main/images/screenshots/YouTube_Analytics_%E2%80%94_Dashboard_Data_Report.pdf)
+![Upload Timing](images/screenshots/UploadTiming.png)
 
 ### 4. Title Sentiment vs Performance
-![Sentiment Analysis](https://github.com/Prameela-04/podcast-engagement-analytics/blob/main/images/screenshots/YouTube_Analytics_%E2%80%94_Dashboard_Data_Report.pdf)
+![Sentiment Analysis](images/screenshots/SentimentAnalysis.png)
 
 
 ---
@@ -111,7 +115,7 @@ Views follow a heavily right-skewed distribution — median views
 
 ## Dashboard
 
-👉 [https://datastudio.google.com/reporting/760dc66a-8004-4fd6-8a02-c7c375b29acd](#) ← 
+👉 [View Interactive Dashboard](https://datastudio.google.com/reporting/760dc66a-8004-4fd6-8a02-c7c375b29acd)
 
 ---
 
