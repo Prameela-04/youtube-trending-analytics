@@ -1,0 +1,113 @@
+-- ============================================================
+-- Podcast Engagement Analytics — SQL Analysis
+-- Dataset: YouTube Trending Videos (US, 2017-2018)
+-- ============================================================
+
+
+-- Q1: Which categories drive the highest median views?
+SELECT
+    category_name,
+    COUNT(*)                          AS video_count,
+    ROUND(AVG(views), 0)              AS avg_views,
+    ROUND(AVG(engagement_rate), 2)    AS avg_engagement_rate,
+    ROUND(AVG(like_rate), 2)          AS avg_like_rate
+FROM videos
+GROUP BY category_name
+ORDER BY avg_views DESC;
+
+
+-- Q2: Top 10 channels by total views
+SELECT
+    channel_title,
+    COUNT(*)            AS videos_trending,
+    SUM(views)          AS total_views,
+    ROUND(AVG(engagement_rate), 2) AS avg_engagement
+FROM videos
+GROUP BY channel_title
+ORDER BY total_views DESC
+LIMIT 10;
+
+
+-- Q3: Does publish day affect performance?
+SELECT
+    publish_day_of_week,
+    COUNT(*)                       AS videos,
+    ROUND(AVG(views), 0)           AS avg_views,
+    ROUND(AVG(engagement_rate), 2) AS avg_engagement
+FROM videos
+GROUP BY publish_day_of_week
+ORDER BY avg_views DESC;
+
+
+-- Q4: High vs low engagement comparison using CASE WHEN
+SELECT
+    CASE
+        WHEN engagement_rate >= 5  THEN 'High (5%+)'
+        WHEN engagement_rate >= 2  THEN 'Medium (2-5%)'
+        ELSE                            'Low (<2%)'
+    END                            AS engagement_tier,
+    COUNT(*)                       AS video_count,
+    ROUND(AVG(views), 0)           AS avg_views,
+    ROUND(AVG(days_to_trend), 1)   AS avg_days_to_trend
+FROM videos
+GROUP BY engagement_tier
+ORDER BY avg_views DESC;
+
+
+-- Q5: Videos that beat both the views AND engagement average
+-- (Using subquery)
+SELECT
+    title,
+    channel_title,
+    category_name,
+    views,
+    ROUND(engagement_rate, 2) AS engagement_rate
+FROM videos
+WHERE views          > (SELECT AVG(views)           FROM videos)
+  AND engagement_rate > (SELECT AVG(engagement_rate) FROM videos)
+ORDER BY views DESC
+LIMIT 20;
+
+
+-- Q6: Sentiment performance using window functions
+SELECT
+    sentiment_label,
+    category_name,
+    ROUND(AVG(views), 0)                             AS avg_views,
+    ROUND(AVG(engagement_rate), 2)                   AS avg_engagement,
+    RANK() OVER (
+        PARTITION BY sentiment_label
+        ORDER BY AVG(views) DESC
+    )                                                AS rank_within_sentiment
+FROM videos
+GROUP BY sentiment_label, category_name
+ORDER BY sentiment_label, rank_within_sentiment;
+
+
+-- Q7: CTE — find the "overperforming" videos
+-- (high engagement relative to their category average)
+WITH category_averages AS (
+    SELECT
+        category_name,
+        AVG(engagement_rate) AS cat_avg_engagement
+    FROM videos
+    GROUP BY category_name
+),
+video_vs_category AS (
+    SELECT
+        v.title,
+        v.channel_title,
+        v.category_name,
+        v.engagement_rate,
+        ca.cat_avg_engagement,
+        ROUND(v.engagement_rate - ca.cat_avg_engagement, 2)
+            AS engagement_above_avg
+    FROM videos v
+    JOIN category_averages ca
+        ON v.category_name = ca.category_name
+)
+SELECT *
+FROM video_vs_category
+WHERE engagement_above_avg > 2
+ORDER BY engagement_above_avg DESC
+LIMIT 25;
