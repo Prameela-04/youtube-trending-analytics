@@ -119,6 +119,14 @@ Views follow a heavily right-skewed distribution — median views
 
 ---
 
+## Key Insights
+| # | Finding | Impact |
+|---|---------|--------|
+| 1 | Gaming = 1.3M median views despite 1.6% of content | Niche audiences over-deliver |
+| 2 | Music ranks top 3 in both views & engagement | Safest dual-metric category |
+| 3 | News trends 3× more but gets 3× fewer views | Frequency ≠ performance |
+| 4 | Slower trending = more total views (+0.345) | Evergreen beats viral spikes |
+
 ## Future Improvements
 
 - Integrate YouTube Data API v3 for real-time data refresh
