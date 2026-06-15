@@ -126,6 +126,7 @@ Views follow a heavily right-skewed distribution — median views
 | 2 | Music ranks top 3 in both views & engagement | Safest dual-metric category |
 | 3 | News trends 3× more but gets 3× fewer views | Frequency ≠ performance |
 | 4 | Slower trending = more total views (+0.345) | Evergreen beats viral spikes |
+📄 [View Full Insights →](./Insights.md)
 
 ## Future Improvements
 
