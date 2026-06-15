@@ -23,7 +23,7 @@ Key findings:
 - ⏱️ Videos that take longer to trend accumulate more total views
   (correlation: +0.345) — suggesting slow-burn evergreen content
   outperforms fast news spikes.
-  - 🤖 A Random Forest model predicts high vs low engagement with
+- 🤖 A Random Forest model predicts high vs low engagement with
     68% accuracy using only 9 features
 
 
