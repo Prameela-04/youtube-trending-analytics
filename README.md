@@ -24,7 +24,7 @@ Key findings:
   (correlation: +0.345) — suggesting slow-burn evergreen content
   outperforms fast news spikes.
 - 🤖 A Random Forest model predicts high vs low engagement with
-    68% accuracy using only 9 features
+    66.3% accuracy using only 9 features
 
 
 ---
